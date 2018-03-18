@@ -19,7 +19,7 @@ def calcFitness(genalg):
 
 if __name__ == "__main__":
 
-    genalg = Genetics(200, len(target), 0, 26)
+    genalg = Genetics(1000, len(target), 0, 26)
     while True:
         calcFitness(genalg)
         f, c = max(zip(genalg.fitnesses, genalg.population))
