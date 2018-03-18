@@ -25,9 +25,9 @@ class Genetics(object):
 
     def repopulate(self):
         new_population = []
-        self.total_fitness = sum(self.fitnesses)
-        if self.total_fitness <= 0: return
-        self.probabilities = [f / self.total_fitness for f in self.fitnesses]
+        self.max_fitness = max(self.fitnesses)
+        if self.max_fitness <= 0: return
+        self.probabilities = [f / self.max_fitness for f in self.fitnesses]
         while len(new_population) != len(self.population):
             c1, c2 = self.choose(), self.choose()
             self.crossover(c1, c2)
@@ -37,12 +37,11 @@ class Genetics(object):
         self.generation += 1
 
     def choose(self):
-        r = random.uniform(0, 1)
-        index = -1
-        while r > 0:
-            index += 1
-            r -= self.probabilities[index]
-        return list(self.population[index])
+        while True:
+            index = random.randint(0, self.population_size - 1)
+            qualifier = random.uniform(0, self.max_fitness)
+            if qualifier < self.fitnesses[index]:
+                return list(self.population[index])
 
     def crossover(self, c1, c2):
         prob = random.random()
