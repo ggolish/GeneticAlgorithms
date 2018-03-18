@@ -27,7 +27,6 @@ class Genetics(object):
         new_population = []
         self.max_fitness = max(self.fitnesses)
         if self.max_fitness <= 0: return
-        self.probabilities = [f / self.max_fitness for f in self.fitnesses]
         while len(new_population) != len(self.population):
             c1, c2 = self.choose(), self.choose()
             self.crossover(c1, c2)
