@@ -54,8 +54,8 @@ class Genetics(object):
                 c2[i] = copy1[i]
 
     def mutate(self, chromosomes):
-        prob = random.random()
-        if prob < self.mutation_rate:
-            for c in chromosomes:
+        for c in chromosomes:
+            prob = random.random()
+            if prob < self.mutation_rate:
                 c[random.randint(0, self.chromosome_size - 1)] = self.new_gene()
 
