@@ -45,7 +45,7 @@ class Genetics(object):
                 self.crossover(c1, c2)
                 self.mutate([c1, c2])
             else:
-                c1, c2 = self.new_gene(), self.new_gene()
+                c1, c2 = self.new_chromosome(), self.new_chromosome()
             new_population.extend([c1, c2])
         self.population = new_population
         self.generation += 1
